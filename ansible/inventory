@@ -1,0 +1,5 @@
+[terraform1]
+84.201.164.185
+
+[all:vars]
+ansible_user=ansible

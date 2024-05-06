@@ -1,0 +1,22 @@
+---
+- name: Get service status using shell command
+  hosts: terraform1
+  become: True
+  tasks:
+  - name: Check service status with systemctl
+    shell: systemctl is-active nginx || true
+    register: service_status_systemctl
+    ignore_errors: yes
+  - name: Check service status with service (nginx)
+    shell: service nginx status || true
+    register: service_status_service_nginx
+    ignore_errors: yes
+  - name: Display service status
+    debug:
+      msg: "nginx Service status: {{ service_status_systemctl.stdout | default(service_status_service_nginx.stdout, true) | default(service_status_service_nginx.stdout, true)}}"
+  - name: Run a command using a templated variable (always use quote filter to avoid injection)
+    shell: nginx -v    
+    register: result
+  - name: Show version
+    debug:
+      msg: "{{result.stderr}}"  

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>VM Info</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+CPU: {{ ansible_processor }}
+RAM: {{ ansible_facts['memory_mb']['real']['total'] }}
+HDD: {{ ansible_facts.devices.vda.partitions.vda2.size }}
+IP_ADRESS: {{ ansible_facts.all_ipv4_addresses }}
+</body>
+</html>

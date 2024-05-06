@@ -1,0 +1,7 @@
+---
+# handlers file for myrole
+- name: restart_web
+  service:
+    name: "{{ srv_web }}"
+    state: restarted
+    enabled: true

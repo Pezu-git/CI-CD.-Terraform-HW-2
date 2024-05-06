@@ -1,0 +1,19 @@
+#cloud-config
+datasource:
+ Ec2:
+  strict_id: false
+ssh_pwauth: no
+users:
+  - name: pezu
+    groups: sudo
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwPUUGPXeHnXA0QfrDJxUPh+X3gXdeD6Tk/yUc3pSnR pezu@ya-ubu
+  - name: ansible
+    groups: sudo
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBwPUUGPXeHnXA0QfrDJxUPh+X3gXdeD6Tk/yUc3pSnR pezu@ya-ubu
+runcmd: []
